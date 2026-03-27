@@ -1,0 +1,5 @@
+- Installazione titte i pacchetti: react, express,cors
+- Aggiunto file index.js
+- Rimozione il codice scritto in react scaricato
+- Nel package.json aggiunto: "dev": "node --watch index.js",
+- Nel public aggiunto gli immagini
