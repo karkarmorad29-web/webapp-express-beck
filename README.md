@@ -29,6 +29,21 @@ e nel Index.js invocchiamo dopo (app.get)
 app.use(notFound);
 app.use(errorsHandler);
 
+- Aggiunto (.env) con i dati anche su (.gitignore per non condevidere i dati quando si fa push) :
+
+APP_PORT=3000
+
+
+DB_HOST="localhost"
+DB_PORT=3306
+DB_USER="utente"
+DB_PASSWORD="password"
+DB_NAME="movies_db"
+
+Aggiunto il file (.env.example) per un futuro condivisione con altri
+
+- nel package.json modificato la chiamata del server: "node --env-file=.env --watch index.js",
+
 
 
 
