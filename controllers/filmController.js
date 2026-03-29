@@ -1,7 +1,7 @@
 const db = require('../data/db');
 
 function index(req, res) {
-    const sqlQuery = 'SELECT * FROM films';
+    const sqlQuery = 'SELECT * FROM movies';
 
     db.query(sqlQuery, (err, results) => {
         if (err) {
@@ -15,13 +15,13 @@ function index(req, res) {
 
 function show(req, res) {
     const id = req.params.id;
-    const sqlQueryFilms = 'SELECT * FROM films WHERE id = ?';
-    const sqlReviews = 'SELECT * FROM reviews WHERE film_id = ?';
+    const sqlQuerymovies = 'SELECT * FROM movies WHERE id = ?';
+    const sqlReviews = 'SELECT * FROM reviews WHERE movies_id = ?';
 
 
 
 
-    db.query(sqlQueryFilms, [id], (err, results) => {
+    db.query(sqlQuerymovies, [id], (err, results) => {
         if (err) {
             console.error('Errore durante la query:', err);
             return res.status(500).json({ error: 'Internal Server Error' });
@@ -31,20 +31,20 @@ function show(req, res) {
             return res.status(404).json({ error: 'Film non trovato' });
         }
 
-        const film = results[0];
-        console.log('film iniziale', film);
+        const movie = results[0];
+        console.log('film iniziale', movie);
 
-        db.query(sqlReviews, [film], (err, reviews) => {
+        db.query(sqlReviews, [movie.id], (err, reviews) => {
             if (err) {
                 console.error('Errore durante la query:', err);
                 return res.status(500).json({ error: 'Internal Server Error' });
             }
             results[0].reviews = reviews;
 
-            film.reviews = reviews;
+            movie.reviews = reviews;
 
             console.log('reviews', reviews);
-            console.log('film con reviews', film);
+            console.log('film con reviews', movie);
 
             res.json(results[0]);
         });

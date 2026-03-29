@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     res.send('Ciao, mondo!');
 });
 
-app.use('/films', filmRouter);
+app.use('http://localhost:3000/api/movies', filmRouter);
 
 app.use(notFound);
 app.use(errorsHandler);
