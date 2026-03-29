@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('http://localhost:3000/api/movies', filmRouter);
+app.use('/api/movies', filmRouter);
 
 app.use(notFound);
 app.use(errorsHandler);
