@@ -14,7 +14,7 @@ function index(req, res) {
 }
 
 function show(req, res) {
-    const id = req.params;
+    const id = req.params.id;
     const sqlQueryFilms = 'SELECT * FROM films WHERE id = ?';
     const sqlReviews = 'SELECT * FROM reviews WHERE film_id = ?';
 
@@ -31,7 +31,7 @@ function show(req, res) {
             return res.status(404).json({ error: 'Film non trovato' });
         }
 
-        const film = results[0].id;
+        const film = results[0];
         console.log('film iniziale', film);
 
         db.query(sqlReviews, [film], (err, reviews) => {
