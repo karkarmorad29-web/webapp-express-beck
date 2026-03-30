@@ -14,7 +14,7 @@ const notFound = require('./middlewares/notFound.js');
 
 
 
-app.use(express.static('public'));
+app.use('/static/', express.static('public'));
 
 app.use(express.json());
 
